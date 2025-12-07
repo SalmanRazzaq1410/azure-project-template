@@ -1,0 +1,13 @@
+# Default owners for everything in the repo
+*       @{{ORG}}/maintainers
+
+# Infrastructure
+/infra/                 @{{ORG}}/platform-team
+/.github/workflows/     @{{ORG}}/platform-team
+
+# Documentation
+*.md                    @{{ORG}}/maintainers
+/docs/                  @{{ORG}}/maintainers
+
+# Configuration
+/.github/               @{{ORG}}/platform-team
