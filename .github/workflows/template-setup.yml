@@ -382,6 +382,52 @@ Happy coding! 🚀`
               });
             }
 
+      - name: Send Teams notification
+        if: success() && vars.TEAMS_WEBHOOK_URL != ''
+        run: |
+          curl -H "Content-Type: application/json" -d '{
+            "type": "message",
+            "attachments": [{
+              "contentType": "application/vnd.microsoft.card.adaptive",
+              "content": {
+                "$schema": "http://adaptivecards.io/schemas/adaptive-card.json",
+                "type": "AdaptiveCard",
+                "version": "1.4",
+                "body": [
+                  {
+                    "type": "TextBlock",
+                    "text": "🚀 New Project Initialized",
+                    "weight": "Bolder",
+                    "size": "Large"
+                  },
+                  {
+                    "type": "FactSet",
+                    "facts": [
+                      {"title": "Project", "value": "${{ needs.configure.outputs.project }}"},
+                      {"title": "Organization", "value": "${{ needs.configure.outputs.org }}"},
+                      {"title": "Environment", "value": "${{ needs.configure.outputs.env }}"},
+                      {"title": "Tech Stack", "value": "${{ needs.configure.outputs.techstack }}"},
+                      {"title": "Region", "value": "${{ needs.configure.outputs.region }}"}
+                    ]
+                  },
+                  {
+                    "type": "TextBlock",
+                    "text": "Resource Group: `${{ needs.configure.outputs.org }}-${{ needs.configure.outputs.env }}-${{ needs.configure.outputs.project }}-rg-${{ needs.configure.outputs.region }}`",
+                    "wrap": true,
+                    "size": "Small"
+                  }
+                ],
+                "actions": [
+                  {
+                    "type": "Action.OpenUrl",
+                    "title": "View Repository",
+                    "url": "${{ github.server_url }}/${{ github.repository }}"
+                  }
+                ]
+              }
+            }]
+          }' "${{ vars.TEAMS_WEBHOOK_URL }}" || echo "Teams notification failed (non-critical)"
+
       - name: Summary
         run: |
           echo "## 🎉 Project Initialized!" >> $GITHUB_STEP_SUMMARY

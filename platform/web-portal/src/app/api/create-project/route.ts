@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { Octokit } from '@octokit/rest';
 import { z } from 'zod';
+import { sendTeamsNotification } from '@/lib/teams';
 
 const CreateProjectSchema = z.object({
   org: z.enum(['nl', 'pvc', 'tws', 'mys']),
@@ -88,6 +89,16 @@ export async function POST(request: NextRequest) {
       console.error('Failed to trigger workflow:', workflowError);
       // Don't fail the request - the workflow can be triggered manually
     }
+
+    // Send Teams notification (async, don't block response)
+    sendTeamsNotification({
+      projectName: project,
+      org,
+      env,
+      techstack,
+      region,
+      repoUrl: repo.html_url,
+    }).catch((err) => console.error('Teams notification failed:', err));
 
     return NextResponse.json({
       success: true,
