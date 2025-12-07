@@ -17,7 +17,7 @@ on:
           - all
 
 env:
-  AZURE_RESOURCE_GROUP: pvc-prod-rg-gitcreate-app
+  AZURE_RESOURCE_GROUP: pvc-prod-platform-rg-euw
   AZURE_LOCATION: westeurope
 
 jobs:
