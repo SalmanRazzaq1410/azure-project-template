@@ -19,7 +19,7 @@ A GitHub App that automates project initialization when repositories are created
 3. Fill in:
    - **Name**: `Phoenix Project Initializer`
    - **Homepage URL**: Your org URL
-   - **Webhook URL**: `https://your-app.azurewebsites.net/api/webhook`
+   - **Webhook URL**: `https://pvc-prod-githubapp-euw.azurewebsites.net/api/webhooks`
    - **Webhook secret**: Generate a secure secret
 4. Set permissions:
    - **Repository permissions**:
@@ -88,34 +88,39 @@ az containerapp create \
     PRIVATE_KEY=secretref:private-key
 ```
 
-#### Option B: Azure App Service
+#### Option B: Azure App Service (Current Production Setup)
 
 ```bash
+# Create Resource Group
+az group create --name pvc-prod-platform-rg-euw --location westeurope
+
 # Create App Service Plan
 az appservice plan create \
-  --name phoenix-github-app-plan \
-  --resource-group rg-phoenix-github-app \
+  --name pvc-prod-platform-plan-euw \
+  --resource-group pvc-prod-platform-rg-euw \
   --sku B1 \
   --is-linux
 
 # Create Web App
 az webapp create \
-  --name phoenix-github-app \
-  --resource-group rg-phoenix-github-app \
-  --plan phoenix-github-app-plan \
+  --name pvc-prod-githubapp-euw \
+  --resource-group pvc-prod-platform-rg-euw \
+  --plan pvc-prod-platform-plan-euw \
   --runtime "NODE:20-lts"
 
 # Configure environment variables
 az webapp config appsettings set \
-  --name phoenix-github-app \
-  --resource-group rg-phoenix-github-app \
+  --name pvc-prod-githubapp-euw \
+  --resource-group pvc-prod-platform-rg-euw \
   --settings \
+    NODE_ENV="production" \
+    PORT="8080" \
     APP_ID="your-app-id" \
     WEBHOOK_SECRET="your-secret" \
     PRIVATE_KEY="base64-encoded-key"
 
 # Deploy from local
-az webapp up --name phoenix-github-app
+az webapp up --name pvc-prod-githubapp-euw
 ```
 
 #### Option C: Azure Functions
@@ -244,35 +249,34 @@ npm test
 
 ## CI/CD Pipeline
 
-The app includes a GitHub Actions workflow for deployment to Azure:
+The app is deployed via `.github/workflows/deploy-platform.yml`:
 
 ```yaml
-# .github/workflows/deploy-github-app.yml
-name: Deploy GitHub App
+# Trigger manually or on push to platform/**
+name: Deploy Platform Services
 
 on:
   push:
     branches: [main]
     paths:
-      - 'platform/github-app/**'
+      - 'platform/**'
+  workflow_dispatch:
+    inputs:
+      service:
+        type: choice
+        options:
+          - github-app
+          - web-portal
+          - all
 
-jobs:
-  deploy:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
-
-      - name: Azure Login
-        uses: azure/login@v1
-        with:
-          creds: ${{ secrets.AZURE_CREDENTIALS }}
-
-      - name: Build and Deploy
-        uses: azure/webapps-deploy@v2
-        with:
-          app-name: phoenix-github-app
-          package: platform/github-app
+# Deploys to: https://pvc-prod-githubapp-euw.azurewebsites.net
 ```
+
+**Required GitHub Secrets:**
+- `AZURE_CREDENTIALS` - Service principal JSON for Azure login
+
+**Required GitHub Variables:**
+- `GITHUB_APP_NAME` (optional) - Override default `pvc-prod-githubapp-euw`
 
 ## Architecture
 
@@ -304,14 +308,14 @@ Add Application Insights for monitoring:
 
 ```bash
 az monitor app-insights component create \
-  --app phoenix-github-app-insights \
+  --app pvc-prod-platform-insights-euw \
   --location westeurope \
-  --resource-group rg-phoenix-github-app
+  --resource-group pvc-prod-platform-rg-euw
 
 # Get connection string and add to app settings
 az webapp config appsettings set \
-  --name phoenix-github-app \
-  --resource-group rg-phoenix-github-app \
+  --name pvc-prod-githubapp-euw \
+  --resource-group pvc-prod-platform-rg-euw \
   --settings APPLICATIONINSIGHTS_CONNECTION_STRING="..."
 ```
 
