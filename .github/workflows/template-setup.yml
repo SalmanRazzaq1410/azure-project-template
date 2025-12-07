@@ -38,6 +38,80 @@ jobs:
           echo "project=$PROJECT" >> $GITHUB_OUTPUT
           echo "techstack=$TECHSTACK" >> $GITHUB_OUTPUT
 
+      - name: Validate parsed values
+        run: |
+          ORG="${{ steps.parse.outputs.org }}"
+          ENV="${{ steps.parse.outputs.env }}"
+          PROJECT="${{ steps.parse.outputs.project }}"
+          TECHSTACK="${{ steps.parse.outputs.techstack }}"
+
+          echo "=========================================="
+          echo "Parsed values:"
+          echo "  ORG:       $ORG"
+          echo "  ENV:       $ENV"
+          echo "  PROJECT:   $PROJECT"
+          echo "  TECHSTACK: $TECHSTACK"
+          echo "=========================================="
+
+          ERRORS=0
+
+          # Check if all values were parsed
+          if [ -z "$ORG" ] || [ -z "$ENV" ] || [ -z "$PROJECT" ] || [ -z "$TECHSTACK" ]; then
+            echo ""
+            echo "❌ ERROR: Repository name must follow pattern: {org}-{env}-{project}-{techstack}"
+            echo "   Example: nl-dev-myapp-fastapi"
+            echo ""
+            ERRORS=1
+          fi
+
+          # Validate org
+          if [[ ! "$ORG" =~ ^(nl|pvc|tws|mys)$ ]]; then
+            echo "❌ ERROR: Invalid org '$ORG'"
+            echo "   Allowed values: nl, pvc, tws, mys"
+            ERRORS=1
+          fi
+
+          # Validate env
+          if [[ ! "$ENV" =~ ^(dev|staging|prod)$ ]]; then
+            echo "❌ ERROR: Invalid env '$ENV'"
+            echo "   Allowed values: dev, staging, prod"
+            ERRORS=1
+          fi
+
+          # Validate project name (alphanumeric, 2-20 chars)
+          if [[ ! "$PROJECT" =~ ^[a-z0-9]{2,20}$ ]]; then
+            echo "❌ ERROR: Invalid project name '$PROJECT'"
+            echo "   Must be 2-20 lowercase alphanumeric characters"
+            ERRORS=1
+          fi
+
+          # Validate techstack
+          VALID_STACKS="fastapi fastapi-hexagonal nodejs go dotnet flutter reactnative"
+          if [[ ! " $VALID_STACKS " =~ " $TECHSTACK " ]]; then
+            echo "❌ ERROR: Invalid techstack '$TECHSTACK'"
+            echo "   Allowed values: $VALID_STACKS"
+            ERRORS=1
+          fi
+
+          if [ $ERRORS -eq 1 ]; then
+            echo ""
+            echo "=========================================="
+            echo "SETUP FAILED - Please rename your repository"
+            echo "=========================================="
+            echo ""
+            echo "Expected format: {org}-{env}-{project}-{techstack}"
+            echo ""
+            echo "Examples:"
+            echo "  nl-dev-myapp-fastapi"
+            echo "  pvc-prod-billing-nodejs"
+            echo "  tws-staging-portal-dotnet"
+            echo ""
+            exit 1
+          fi
+
+          echo ""
+          echo "✅ All values validated successfully!"
+
       - name: Select tech stack template
         run: |
           TECHSTACK="${{ steps.parse.outputs.techstack }}"
