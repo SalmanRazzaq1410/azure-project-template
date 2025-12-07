@@ -1,90 +1,34 @@
-# Azure Project Template
+# Azure Project Template - Implementation Scripts
 
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-[![CI](https://github.com/phoenixvc/azure-project-template/actions/workflows/ci.yml/badge.svg)](https://github.com/phoenixvc/azure-project-template/actions/workflows/ci.yml)
-[![Python 3.11+](https://img.shields.io/badge/python-3.11+-blue.svg)](https://www.python.org/downloads/)
-[![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black)
-[![Azure](https://img.shields.io/badge/Azure-Ready-0078D4?logo=microsoft-azure)](https://azure.microsoft.com/)
+## Usage
 
-Production-ready Azure project template with FastAPI, PostgreSQL, and Infrastructure as Code.
+1. Navigate to your azure-project-template repo:
+   ```powershell
+   cd C:\Users\smitj\repos\azure-project-template
+   ```
 
-## Quick Start
+2. Create scripts folder:
+   ```powershell
+   mkdir scripts
+   ```
 
-### 1. Create from Template
-\\\ash
-gh repo create myorg/my-project --template phoenixvc/azure-project-template --public --clone
-cd my-project
-\\\
+3. Copy all .ps1 files to the scripts folder
 
-### 2. Choose Architecture
-\\\ash
-# Standard (fast development)
-cp -r src/api-standard src/api
+4. Run the main script:
+   ```powershell
+   .\add-implementations.ps1
+   ```
 
-# OR Hexagonal (clean architecture)
-cp -r src/api-hexagonal src/api
+## What it does
 
-# Clean up
-rm -rf src/api-standard src/api-hexagonal
-\\\
+- Creates infrastructure files (Bicep + parameters)
+- Creates Hexagonal API implementation
+- Creates .gitignore
+- Commits and pushes to GitHub
 
-### 3. Configure
-\\\ash
-# Edit infrastructure parameters
-code infra/parameters/dev.bicepparam
-\\\
+## Files
 
-### 4. Deploy
-\\\ash
-az deployment sub create --location westeurope --template-file infra/main.bicep --parameters infra/parameters/dev.bicepparam
-\\\
-
-### 5. Run Locally
-\\\ash
-cd src/api
-pip install -r requirements.txt
-uvicorn main:app --reload --port 8000
-\\\
-
-## Architecture Options
-
-### Standard (Layered)
-**Best for:** Quick development, MVPs, simple CRUD
-
-- Fast development
-- Easy to understand
-- Simple structure
-
-### Hexagonal (Clean Architecture)
-**Best for:** Complex business logic, long-term projects
-
-- Highly testable
-- Easy to maintain
-- Clear separation of concerns
-
-See [ARCHITECTURE.md](docs/ARCHITECTURE.md) for details.
-
-## Project Structure
-\\\
-├── infra/           # Bicep templates
-├── src/             # Source code
-│   ├── api-standard/
-│   ├── api-hexagonal/
-│   └── web/
-├── config/          # Environment configs
-├── db/              # Migrations & seeds
-└── tests/           # Unit, integration, E2E
-\\\
-
-## Testing
-\\\ash
-pytest tests/unit -v
-pytest tests/integration -v
-pytest tests/e2e -v
-\\\
-
-## Related
-- [azure-infrastructure](https://github.com/phoenixvc/azure-infrastructure) - Standards & modules
-
-Built with ❤️ by Phoenix VC
-
+- `add-implementations.ps1` - Main script (run this)
+- `scripts/create-infra.ps1` - Infrastructure files
+- `scripts/create-api-hexagonal.ps1` - Hexagonal API
+- `scripts/create-gitignore.ps1` - .gitignore file
